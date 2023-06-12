@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  nginx-ciitev_web-web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: nginx_ciitev_web
+    image: ciitev_pgloader
+    volumes:
+      - .:/code
+    command:
+      - /start
+
