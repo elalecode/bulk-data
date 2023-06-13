@@ -2,7 +2,7 @@
 
 echo "Starting script..."
 # Archivo de origen
-source_file="/code/ciitev_main/txt/"
+source_file=/home/administrador/import_anam/importar/ciitev/txt
 
 # Tabla de destino en PostgreSQL
 target_table="public.ciitev_permiso_auto_americano"
@@ -24,15 +24,16 @@ target_table_propietario="public.ciitev_propietario"
 target_table_tramitador="public.ciitev_tramitador"
 
 # URL de la base de datos PostgreSQL
-database_url="pgsql://postgres:D3sarrollo123..@ziondesarrollo.southcentralus.cloudapp.azure.com:5432/anam_migrations"
+# database_url="pgsql://postgres:D3sarrollo123..@ziondesarrollo.southcentralus.cloudapp.azure.com:5432/anam_migrations"
 # database_url="postgresql://postgres:example@migraciones-db-1:5432/postgres"
+database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration"
 
 
 #################################################
 ###      PERMISO DE AUTO AMERICANO
 #################################################
 
-for archivo in /code/ciitev_main/txt/permiso_auto_americano/*
+for archivo in $source_file/permiso_auto_americano/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -140,7 +141,7 @@ done;
 ###         PERMISO DE INTERNACION
 ################################################
 
-for archivo in /code/ciitev_main/txt/permiso_internacion/*
+for archivo in $source_file/permiso_internacion/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -215,7 +216,7 @@ done;
 ###         PERMISO DE EMBARCACION
 ################################################
 
-for archivo in /code/ciitev_main/txt/permiso_embarcacion/*
+for archivo in $source_file/permiso_embarcacion/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -296,7 +297,7 @@ done;
 ###         PERMISO DE CASA RODANTE
 ################################################
 
-for archivo in /code/ciitev_main/txt/permiso_casa_rodante/*
+for archivo in $source_file/permiso_casa_rodante/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -377,7 +378,7 @@ done;
 ###         VEHICULO REMOLCADO
 ################################################
 
-for archivo in /code/ciitev_main/txt/vehiculo_remolcado/*
+for archivo in $source_file/vehiculo_remolcado/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -424,7 +425,7 @@ done;
 ###             REMOLQUE
 ################################################
 
-for archivo in /code/ciitev_main/txt/remolque/*
+for archivo in $source_file/remolque/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -469,7 +470,7 @@ done;
 ###             REINGRESO
 ################################################
 
-for archivo in /code/ciitev_main/txt/reingreso/*
+for archivo in $source_file/reingreso/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -542,7 +543,7 @@ done;
 ###            INICIO FACULTAD
 ################################################
 
-for archivo in /code/ciitev_main/txt/inicio_facultad/*
+for archivo in $source_file/inicio_facultad/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -587,7 +588,7 @@ done;
 ###         INTERNADOR FRONTERIZO
 ################################################
 
-for archivo in /code/ciitev_main/txt/internador_fronterizo/*
+for archivo in $source_file/internador_fronterizo/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -652,7 +653,7 @@ done;
 ###         CASA RODANTE
 ################################################
 
-for archivo in /code/ciitev_main/txt/casa_rodante/*
+for archivo in $source_file/casa_rodante/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -712,7 +713,7 @@ done;
 ###         VEHICULO
 ################################################
 
-for archivo in /code/ciitev_main/txt/vehiculo/*
+for archivo in $source_file/vehiculo/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -776,7 +777,7 @@ done;
 ###         EMBARCACION
 ################################################
 
-for archivo in /code/ciitev_main/txt/embarcacion/*
+for archivo in $source_file/embarcacion/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -846,7 +847,7 @@ done;
 ###         IMPORTADOR
 ################################################
 
-for archivo in /code/ciitev_main/txt/importador/*
+for archivo in $source_file/importador/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
@@ -933,7 +934,7 @@ done;
 ###             TRAMITADOR
 ################################################
 
-for archivo in /code/ciitev_main/txt/tramitador/*
+for archivo in $source_file/tramitador/*
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
