@@ -35,6 +35,8 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 
 for archivo in $source_file/permiso_auto_americano/*.txt
 do
+echo "Iniciacion importacion de permisos auto americano con el archivo:"
+echo $archivo
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
