@@ -552,7 +552,7 @@ do
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
-    FROM '$archivo' WITH ENCODING iso-8859-1
+    FROM '$archivo'
         HAVING FIELDS
         (
             permiso,
@@ -662,7 +662,7 @@ do
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
-    FROM '$archivo' WITH ENCODING iso-8859-1
+    FROM '$archivo'
         HAVING FIELDS
         (
             clave_cat_clase_casa_rodante,
