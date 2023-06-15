@@ -717,7 +717,7 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         VEHICULO
 ################################################
 
-for archivo in $source_file/vehiculo/*.txt
+for archivo in $source_file/vehiculo/*.txt.file
 do
 echo "Importando archivo..."
 echo $archivo
