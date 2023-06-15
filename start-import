@@ -592,65 +592,65 @@ done;
 ###         INTERNADOR FRONTERIZO
 ################################################
 
-# for archivo in $source_file/internador_fronterizo/*.txt
-# do
-# config_file=$(mktemp)
-# cat << EOF > $config_file
-# LOAD CSV
-#     FROM '$archivo'
-#         HAVING FIELDS
-#         (
-#             nombre,
-#             apellido_paterno,
-#             apellido_materno,
-#             calle,
-#             numero,
-#             codigo_postal,
-#             ciudad,
-#             clave_cat_estado,
-#             numero_licencia,
-#             rfc,
-#             telefono,
-#             email,
-#             folio_permiso,
-#             colonia
-#         )
-#     INTO $database_url
-#         TARGET TABLE $target_table_internador_fronterizo
-#         (
-#             nombre,
-#             apellido_paterno,
-#             apellido_materno,
-#             calle,
-#             numero,
-#             codigo_postal,
-#             ciudad,
-#             clave_cat_estado,
-#             numero_licencia,
-#             rfc,
-#             telefono,
-#             email,
-#             folio_permiso,
-#             colonia
-#         )
-#     WITH 
-#         drop indexes,
-#         fields terminated by '|', 
-#         skip header = 1, 
-#         fields optionally enclosed by '"' 
+for archivo in $source_file/internador_fronterizo/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'
+        HAVING FIELDS
+        (
+            nombre,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            codigo_postal,
+            ciudad,
+            clave_cat_estado,
+            numero_licencia,
+            rfc,
+            telefono,
+            email,
+            folio_permiso,
+            colonia
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_internador_fronterizo
+        (
+            nombre,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            codigo_postal,
+            ciudad,
+            clave_cat_estado,
+            numero_licencia,
+            rfc,
+            telefono,
+            email,
+            folio_permiso,
+            colonia
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
     
-#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
 
-# EOF
+EOF
 
-# # Ejecutar la carga utilizando pgloader
-# echo "Launch pgloader"
-# pgloader $config_file
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
 
-# # Eliminar el archivo de configuración temporal
-# echo "Delete config file temp"
-# rm $config_file
-# done;
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
 
 
 #################################################
