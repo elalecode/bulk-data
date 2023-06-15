@@ -719,6 +719,9 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 
 for archivo in $source_file/vehiculo/*.txt
 do
+echo "Importando archivo..."
+echo $archivo
+
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
