@@ -382,99 +382,7 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         VEHICULO REMOLCADO
 ################################################
 
-for archivo in $source_file/vehiculo_remolcado/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'
-        HAVING FIELDS
-        (
-            folio_permiso,
-            numero_vehiculo_remolcado,
-            numero_serie_vehiculo_remolcado,
-            clave_clase_vehiculo_remolcado,
-            clave_tipo_vehiculo_remolcado
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_vehiculo_remolcado
-        (
-            folio_permiso,
-            numero_vehiculo_remolcado,
-            numero_serie_vehiculo_remolcado,
-            clave_clase_vehiculo_remolcado,
-            clave_tipo_vehiculo_remolcado
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
-    
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-
-EOF
-
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
-
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
-
-
-#################################################
-###             REMOLQUE
-################################################
-
-for archivo in $source_file/remolque/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'
-        HAVING FIELDS
-        (
-            folio_permiso,
-            numero_serie_remolque,
-            clave_cat_tipo_remolque,
-            clave_cat_clase_remolque
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_remolque
-        (
-            folio_permiso,
-            numero_serie_remolque,
-            clave_cat_tipo_remolque,
-            clave_cat_clase_remolque
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
-    
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-
-EOF
-
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
-
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
-
-
-#################################################
-###             REINGRESO
-################################################
-
-# for archivo in $source_file/reingreso/*.txt
+# for archivo in $source_file/vehiculo_remolcado/*.txt
 # do
 # config_file=$(mktemp)
 # cat << EOF > $config_file
@@ -483,45 +391,19 @@ done;
 #         HAVING FIELDS
 #         (
 #             folio_permiso,
-#             numero_reingreso,
-#             clave_cat_tipo_retorno_reingreso,
-#             folio_tarjeton,
-#             dias_disponibles_reingreso,
-#             fecha_reingreso_vehiculo [date format 'DDMMYYYY'],
-#             clave_cat_modulo_ingreso,
-#             fecha_maximo_retorno_vehiculo [date format 'DDMMYYYY'],
-#             fecha_retorno_vehiculo [date format 'DDMMYYYY'],
-#             clave_cat_modulo_egreso,
-#             folio_certificado_retorno,
-#             clave_tipo_captura,
-#             numero_equipo_visor_retorno,
-#             numero_equipo_visor,
-#             clave_cat_tipo_egreso_arco,
-#             clave_cat_documento_iitv,
-#             clave_cat_estatus_retorno,
-#             clave_cat_estatus_reingreso
+#             numero_vehiculo_remolcado,
+#             numero_serie_vehiculo_remolcado,
+#             clave_clase_vehiculo_remolcado,
+#             clave_tipo_vehiculo_remolcado
 #         )
 #     INTO $database_url
-#         TARGET TABLE $target_table_reingreso
+#         TARGET TABLE $target_table_vehiculo_remolcado
 #         (
 #             folio_permiso,
-#             numero_reingreso,
-#             clave_cat_tipo_retorno_reingreso,
-#             folio_tarjeton,
-#             dias_disponibles_reingreso,
-#             fecha_reingreso_vehiculo,
-#             clave_cat_modulo_ingreso,
-#             fecha_maximo_retorno_vehiculo,
-#             fecha_retorno_vehiculo,
-#             clave_cat_modulo_egreso,
-#             folio_certificado_retorno,
-#             clave_tipo_captura,
-#             numero_equipo_visor_retorno,
-#             numero_equipo_visor,
-#             clave_cat_tipo_egreso_arco,
-#             clave_cat_documento_iitv,
-#             clave_cat_estatus_retorno,
-#             clave_cat_estatus_reingreso
+#             numero_vehiculo_remolcado,
+#             numero_serie_vehiculo_remolcado,
+#             clave_clase_vehiculo_remolcado,
+#             clave_tipo_vehiculo_remolcado
 #         )
 #     WITH 
 #         drop indexes,
@@ -541,6 +423,124 @@ done;
 # echo "Delete config file temp"
 # rm $config_file
 # done;
+
+
+#################################################
+###             REMOLQUE
+################################################
+
+# for archivo in $source_file/remolque/*.txt
+# do
+# config_file=$(mktemp)
+# cat << EOF > $config_file
+# LOAD CSV
+#     FROM '$archivo'
+#         HAVING FIELDS
+#         (
+#             folio_permiso,
+#             numero_serie_remolque,
+#             clave_cat_tipo_remolque,
+#             clave_cat_clase_remolque
+#         )
+#     INTO $database_url
+#         TARGET TABLE $target_table_remolque
+#         (
+#             folio_permiso,
+#             numero_serie_remolque,
+#             clave_cat_tipo_remolque,
+#             clave_cat_clase_remolque
+#         )
+#     WITH 
+#         drop indexes,
+#         fields terminated by '|', 
+#         skip header = 1, 
+#         fields optionally enclosed by '"' 
+    
+#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+
+# EOF
+
+# # Ejecutar la carga utilizando pgloader
+# echo "Launch pgloader"
+# pgloader $config_file
+
+# # Eliminar el archivo de configuración temporal
+# echo "Delete config file temp"
+# rm $config_file
+# done;
+
+
+#################################################
+###             REINGRESO
+################################################
+
+for archivo in $source_file/reingreso/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'
+        HAVING FIELDS
+        (
+            folio_permiso,
+            numero_reingreso,
+            clave_cat_tipo_retorno_reingreso,
+            folio_tarjeton,
+            dias_disponibles_reingreso,
+            fecha_reingreso_vehiculo [date format 'DDMMYYYY'],
+            clave_cat_modulo_ingreso,
+            fecha_maximo_retorno_vehiculo [date format 'DDMMYYYY'],
+            fecha_retorno_vehiculo [date format 'DDMMYYYY'],
+            clave_cat_modulo_egreso,
+            folio_certificado_retorno,
+            clave_tipo_captura,
+            numero_equipo_visor_retorno,
+            numero_equipo_visor,
+            clave_cat_tipo_egreso_arco,
+            clave_cat_documento_iitv,
+            clave_cat_estatus_retorno,
+            clave_cat_estatus_reingreso
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_reingreso
+        (
+            folio_permiso,
+            numero_reingreso,
+            clave_cat_tipo_retorno_reingreso,
+            folio_tarjeton,
+            dias_disponibles_reingreso,
+            fecha_reingreso_vehiculo,
+            clave_cat_modulo_ingreso,
+            fecha_maximo_retorno_vehiculo,
+            fecha_retorno_vehiculo,
+            clave_cat_modulo_egreso,
+            folio_certificado_retorno,
+            clave_tipo_captura,
+            numero_equipo_visor_retorno,
+            numero_equipo_visor,
+            clave_cat_tipo_egreso_arco,
+            clave_cat_documento_iitv,
+            clave_cat_estatus_retorno,
+            clave_cat_estatus_reingreso
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
 
 
 #################################################
