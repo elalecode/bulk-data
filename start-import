@@ -784,139 +784,51 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         EMBARCACION
 ################################################
 
-for archivo in $source_file/embarcacion/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'
-        HAVING FIELDS
-        (
-            clave_cat_clase_embarcacion,
-            clave_cat_marca_embarcacion,
-            clave_cat_tipo_embarcacion,
-            modelo,
-            numero_serie,
-            clave_cat_bandera_importador_propietario,
-            clave_cat_bandera_remolque,
-            numero_motor,
-            numero_motor_1,
-            marca_otro,
-            tipo_otro,
-            matricula,
-            folio,
-            nombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            calle,
-            numero,
-            claveArrendador,
-            claveCategoriaFiscal,
-            ciudad
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_embarcacion
-        (
-            clave_cat_clase_embarcacion,
-            clave_cat_marca_embarcacion,
-            clave_cat_tipo_embarcacion,
-            modelo,
-            numero_serie,
-            clave_cat_bandera_importador_propietario,
-            clave_cat_bandera_remolque,
-            numero_motor,
-            numero_motor_1,
-            marca_otro,
-            tipo_otro,
-            matricula,
-            permiso int using "folio"
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
-    
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-EOF
-
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
-
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
-
-
-#################################################
-###         IMPORTADOR
-################################################
-
-# for archivo in $source_file/importador/*.txt
+# for archivo in $source_file/embarcacion/*.txt
 # do
 # config_file=$(mktemp)
 # cat << EOF > $config_file
 # LOAD CSV
-#     FROM '$archivo'  WITH ENCODING iso-8859-1
+#     FROM '$archivo'
 #         HAVING FIELDS
 #         (
-#             clave_cat_documento_identificacion,
-#             numero_documento_identificacion,
+#             clave_cat_clase_embarcacion,
+#             clave_cat_marca_embarcacion,
+#             clave_cat_tipo_embarcacion,
+#             modelo,
+#             numero_serie,
+#             clave_cat_bandera_importador_propietario,
+#             clave_cat_bandera_remolque,
+#             numero_motor,
+#             numero_motor_1,
+#             marca_otro,
+#             tipo_otro,
+#             matricula,
+#             folio,
 #             nombre,
-#             apellido_paterno,
-#             apellido_materno,
+#             apellidoPaterno,
+#             apellidoMaterno,
 #             calle,
 #             numero,
-#             codigo_postal,
-#             ciudad,
-#             clave_cat_pais,
-#             clave_cat_estado,
-#             clave_cat_calidad_migratoria,
-#             clave_cat_forma_migratoria,
-#             numero_forma_migratoria,
-#             correo_electronico,
-#             telefono,
-#             codigo_postal_mexico,
-#             clave_cat_estado_mexico,
-#             ciudad_mexico,
-#             colonia_mexico,
-#             calle_mexico,
-#             numero_exterior_mexico,
-#             numero_interior_mexico,
-#             cat_bandera_domicilio_mexico,
-#             folio,
-#             clave_cat_tipo_visa
+#             claveArrendador,
+#             claveCategoriaFiscal,
+#             ciudad
 #         )
 #     INTO $database_url
-#         TARGET TABLE $target_table_importador
+#         TARGET TABLE $target_table_embarcacion
 #         (
-#             numero_documento_identificacion,
-#             nombre,
-#             apellido_paterno,
-#             apellido_materno,
-#             calle,
-#             numero,
-#             codigo_postal,
-#             ciudad,
-#             numero_forma_migratoria,
-#             correo_electronico,
-#             telefono,
-#             codigo_postal_mexico,
-#             ciudad_mexico,
-#             colonia_mexico,
-#             calle_mexico,
-#             numero_exterior_mexico,
-#             numero_interior_mexico,
-#             cat_bandera_domicilio_mexico,
-#             clave_cat_calidad_migratoria,
-#             clave_cat_estado_temp text using "clave_cat_estado",
-#             clave_cat_estado_mexico,
-#             clave_cat_forma_migratoria,
-#             clave_cat_pais,
-#             clave_cat_tipo_visa,
-#             clave_cat_documento_identificacion_temp int using "clave_cat_documento_identificacion",
+#             clave_cat_clase_embarcacion,
+#             clave_cat_marca_embarcacion,
+#             clave_cat_tipo_embarcacion,
+#             modelo,
+#             numero_serie,
+#             clave_cat_bandera_importador_propietario,
+#             clave_cat_bandera_remolque,
+#             numero_motor,
+#             numero_motor_1,
+#             marca_otro,
+#             tipo_otro,
+#             matricula,
 #             permiso int using "folio"
 #         )
 #     WITH 
@@ -936,6 +848,94 @@ done;
 # echo "Delete config file temp"
 # rm $config_file
 # done;
+
+
+#################################################
+###         IMPORTADOR
+################################################
+
+for archivo in $source_file/importador/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'
+        HAVING FIELDS
+        (
+            clave_cat_documento_identificacion,
+            numero_documento_identificacion,
+            nombre,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            codigo_postal,
+            ciudad,
+            clave_cat_pais,
+            clave_cat_estado,
+            clave_cat_calidad_migratoria,
+            clave_cat_forma_migratoria,
+            numero_forma_migratoria,
+            correo_electronico,
+            telefono,
+            codigo_postal_mexico,
+            clave_cat_estado_mexico,
+            ciudad_mexico,
+            colonia_mexico,
+            calle_mexico,
+            numero_exterior_mexico,
+            numero_interior_mexico,
+            cat_bandera_domicilio_mexico,
+            folio,
+            clave_cat_tipo_visa
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_importador
+        (
+            numero_documento_identificacion,
+            nombre,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            codigo_postal,
+            ciudad,
+            numero_forma_migratoria,
+            correo_electronico,
+            telefono,
+            codigo_postal_mexico,
+            ciudad_mexico,
+            colonia_mexico,
+            calle_mexico,
+            numero_exterior_mexico,
+            numero_interior_mexico,
+            cat_bandera_domicilio_mexico,
+            clave_cat_calidad_migratoria,
+            clave_cat_estado_temp text using "clave_cat_estado",
+            clave_cat_estado_mexico,
+            clave_cat_forma_migratoria,
+            clave_cat_pais,
+            clave_cat_tipo_visa,
+            clave_cat_documento_identificacion_temp int using "clave_cat_documento_identificacion",
+            permiso int using "folio"
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
 
 #################################################
 ###             TRAMITADOR
