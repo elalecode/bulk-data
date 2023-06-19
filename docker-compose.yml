@@ -11,4 +11,4 @@ services:
       - .:/code
     command:
       - /start
-
+    network_mode: "host"
