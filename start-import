@@ -2,7 +2,7 @@
 
 echo "Starting script..."
 # Archivo de origen
-source_file=/home/administrador/import_anam/importar/ciitev/txt
+source_file=/code/ciitev/txt
 
 # Tabla de destino en PostgreSQL
 target_table="public.ciitev_permiso_auto_americano"

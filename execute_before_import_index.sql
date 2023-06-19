@@ -1,0 +1,325 @@
+
+
+
+
+--------------- INDEXES CASA RODANTE
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_bandera_import_f7befb68_like ON public.ciitev_casa_rodante USING btree (clave_cat_bandera_importador_propietario varchar_pattern_ops);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_bandera_importad_f7befb68 ON public.ciitev_casa_rodante USING btree (clave_cat_bandera_importador_propietario);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_bandera_remolque_3391bf7d ON public.ciitev_casa_rodante USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_bandera_remolque_3391bf7d_like ON public.ciitev_casa_rodante USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_clase_casa_rodante_3b01db32 ON public.ciitev_casa_rodante USING btree (clave_cat_clase_casa_rodante);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_clase_casa_rodante_3b01db32_like ON public.ciitev_casa_rodante USING btree (clave_cat_clase_casa_rodante varchar_pattern_ops);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_marca_casa_rodante_1112531d ON public.ciitev_casa_rodante USING btree (clave_cat_marca_casa_rodante);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_marca_casa_rodante_1112531d_like ON public.ciitev_casa_rodante USING btree (clave_cat_marca_casa_rodante varchar_pattern_ops);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_tipo_casa_rodante_406481ed ON public.ciitev_casa_rodante USING btree (clave_cat_tipo_casa_rodante);
+-- CREATE INDEX ciitev_casa_rodante_clave_cat_tipo_casa_rodante_406481ed_like ON public.ciitev_casa_rodante USING btree (clave_cat_tipo_casa_rodante varchar_pattern_ops);
+-- CREATE INDEX ciitev_casa_rodante_id_importador_5b56f6b8 ON public.ciitev_casa_rodante USING btree (id_importador);
+-- CREATE INDEX ciitev_casa_rodante_id_propietario_49c5807f ON public.ciitev_casa_rodante USING btree (id_propietario);
+
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_bandera_import_f7befb68_like;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_bandera_importad_f7befb68;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_bandera_remolque_3391bf7d;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_bandera_remolque_3391bf7d_like;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_clase_casa_rodante_3b01db32;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_clase_casa_rodante_3b01db32_like;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_marca_casa_rodante_1112531d;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_marca_casa_rodante_1112531d_like;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_tipo_casa_rodante_406481ed;
+DROP INDEX IF EXISTS ciitev_casa_rodante_clave_cat_tipo_casa_rodante_406481ed_like;
+DROP INDEX IF EXISTS ciitev_casa_rodante_id_importador_5b56f6b8;
+DROP INDEX IF EXISTS ciitev_casa_rodante_id_propietario_49c5807f;
+
+--------------- INDEXES EMBARCACION
+-- CREATE INDEX ciitev_embarcacion_clave_cat_bandera_import_7ea5eaa8_like ON public.ciitev_embarcacion USING btree (clave_cat_bandera_importador_propietario varchar_pattern_ops);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_bandera_importad_7ea5eaa8 ON public.ciitev_embarcacion USING btree (clave_cat_bandera_importador_propietario);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_bandera_remolque_a7595db9 ON public.ciitev_embarcacion USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_bandera_remolque_a7595db9_like ON public.ciitev_embarcacion USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_clase_embarcacion_2929ee44 ON public.ciitev_embarcacion USING btree (clave_cat_clase_embarcacion);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_clase_embarcacion_2929ee44_like ON public.ciitev_embarcacion USING btree (clave_cat_clase_embarcacion varchar_pattern_ops);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_marca_embarcacion_b31523c5 ON public.ciitev_embarcacion USING btree (clave_cat_marca_embarcacion);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_marca_embarcacion_b31523c5_like ON public.ciitev_embarcacion USING btree (clave_cat_marca_embarcacion varchar_pattern_ops);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_tipo_embarcacion_b1f573a6 ON public.ciitev_embarcacion USING btree (clave_cat_tipo_embarcacion);
+-- CREATE INDEX ciitev_embarcacion_clave_cat_tipo_embarcacion_b1f573a6_like ON public.ciitev_embarcacion USING btree (clave_cat_tipo_embarcacion varchar_pattern_ops);
+-- CREATE INDEX ciitev_embarcacion_id_importador_69e4c8d1 ON public.ciitev_embarcacion USING btree (id_importador);
+-- CREATE INDEX ciitev_embarcacion_id_propietario_579e7b89 ON public.ciitev_embarcacion USING btree (id_propietario);
+-- CREATE INDEX ciitev_embarcacion_id_tramitador_7a1fa6b3 ON public.ciitev_embarcacion USING btree (id_tramitador);
+
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_bandera_import_7ea5eaa8_like;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_bandera_importad_7ea5eaa8;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_bandera_remolque_a7595db9;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_bandera_remolque_a7595db9_like;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_clase_embarcacion_2929ee44;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_clase_embarcacion_2929ee44_like;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_marca_embarcacion_b31523c5;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_marca_embarcacion_b31523c5_like;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_tipo_embarcacion_b1f573a6;
+DROP INDEX IF EXISTS ciitev_embarcacion_clave_cat_tipo_embarcacion_b1f573a6_like;
+DROP INDEX IF EXISTS ciitev_embarcacion_id_importador_69e4c8d1;
+DROP INDEX IF EXISTS ciitev_embarcacion_id_propietario_579e7b89;
+DROP INDEX IF EXISTS ciitev_embarcacion_id_tramitador_7a1fa6b3;
+
+--------------- INDEXES IMPORTADOR
+-- CREATE INDEX ciitev_importador_cat_bandera_domicilio_mexico_dd701f62 ON public.ciitev_importador USING btree (cat_bandera_domicilio_mexico);
+-- CREATE INDEX ciitev_importador_cat_bandera_domicilio_mexico_dd701f62_like ON public.ciitev_importador USING btree (cat_bandera_domicilio_mexico varchar_pattern_ops);
+-- CREATE INDEX ciitev_importador_clave_cat_calidad_migratoria_a2961eec ON public.ciitev_importador USING btree (clave_cat_calidad_migratoria);
+-- CREATE INDEX ciitev_importador_clave_cat_calidad_migratoria_a2961eec_like ON public.ciitev_importador USING btree (clave_cat_calidad_migratoria varchar_pattern_ops);
+-- CREATE INDEX ciitev_importador_clave_cat_documento_identi_379af5e2 ON public.ciitev_importador USING btree (clave_cat_documento_identificacion_id);
+-- CREATE INDEX ciitev_importador_clave_cat_estado_967903b6 ON public.ciitev_importador USING btree (clave_cat_estado);
+-- CREATE INDEX ciitev_importador_clave_cat_estado_mexico_ecfed4f9 ON public.ciitev_importador USING btree (clave_cat_estado_mexico);
+-- CREATE INDEX ciitev_importador_clave_cat_estado_mexico_ecfed4f9_like ON public.ciitev_importador USING btree (clave_cat_estado_mexico varchar_pattern_ops);
+-- CREATE INDEX ciitev_importador_clave_cat_forma_migratoria_06c6b918 ON public.ciitev_importador USING btree (clave_cat_forma_migratoria);
+-- CREATE INDEX ciitev_importador_clave_cat_forma_migratoria_06c6b918_like ON public.ciitev_importador USING btree (clave_cat_forma_migratoria varchar_pattern_ops);
+-- CREATE INDEX ciitev_importador_clave_cat_pais_957fdf0e ON public.ciitev_importador USING btree (clave_cat_pais);
+-- CREATE INDEX ciitev_importador_clave_cat_pais_957fdf0e_like ON public.ciitev_importador USING btree (clave_cat_pais varchar_pattern_ops);
+-- CREATE INDEX ciitev_importador_clave_cat_tipo_visa_fea455d5 ON public.ciitev_importador USING btree (clave_cat_tipo_visa);
+-- CREATE INDEX ciitev_importador_clave_cat_tipo_visa_fea455d5_like ON public.ciitev_importador USING btree (clave_cat_tipo_visa varchar_pattern_ops);
+
+DROP INDEX IF EXISTS ciitev_importador_cat_bandera_domicilio_mexico_dd701f62;
+DROP INDEX IF EXISTS ciitev_importador_cat_bandera_domicilio_mexico_dd701f62_like;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_calidad_migratoria_a2961eec;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_calidad_migratoria_a2961eec_like;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_documento_identi_379af5e2;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_estado_967903b6;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_estado_mexico_ecfed4f9;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_estado_mexico_ecfed4f9_like;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_forma_migratoria_06c6b918;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_forma_migratoria_06c6b918_like;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_pais_957fdf0e;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_pais_957fdf0e_like;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_tipo_visa_fea455d5;
+DROP INDEX IF EXISTS ciitev_importador_clave_cat_tipo_visa_fea455d5_like;
+
+--------------- INDEXES INICIO FACULTAD
+-- CREATE INDEX ciitev_internador_fronterizo_folio_permiso_7344e004 ON public.ciitev_internador_fronterizo USING btree (folio_permiso);
+-- CREATE INDEX ciitev_internador_fronterizo_id_vehiculo_415da6cd ON public.ciitev_internador_fronterizo USING btree (id_vehiculo);
+
+DROP INDEX IF EXISTS ciitev_internador_fronterizo_folio_permiso_7344e004;
+DROP INDEX IF EXISTS ciitev_internador_fronterizo_id_vehiculo_415da6cd;
+
+
+---- INDEX PERMISO CASA RODANTE
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_bandera_inicio_22ddfe84_like ON public.ciitev_permiso_casa_rodante (clave_cat_bandera_inicio_facultades);
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_bandera_remolq_639391cd_like ON public.ciitev_permiso_casa_rodante (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_estado_destino_56e7493f_like ON public.ciitev_permiso_casa_rodante (clave_cat_estado_destino);
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_estatus_retorn_e9a02f40_like ON public.ciitev_permiso_casa_rodante (clave_cat_estatus_retorno);
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_tipo_captura_3b9bda19_like ON public.ciitev_permiso_casa_rodante (clave_cat_tipo_captura);
+-- CREATE INDEX ciitev_permiso_casa_roda_clave_cat_tipo_moneda_pa_7c284685_like ON public.ciitev_permiso_casa_rodante (clave_cat_tipo_moneda_pago);
+-- CREATE INDEX ciitev_permiso_casa_rodant_clave_cat_bandera_inicio_f_22ddfe84 ON public.ciitev_permiso_casa_rodante (clave_cat_bandera_inicio_facultades);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_bandera_remolque_639391cd ON public.ciitev_permiso_casa_rodante (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_documento_iitv_3425cd61 ON public.ciitev_permiso_casa_rodante (clave_cat_documento_iitv);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_estado_destino_56e7493f ON public.ciitev_permiso_casa_rodante (clave_cat_estado_destino);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_estatus_permiso_34af4720 ON public.ciitev_permiso_casa_rodante (clave_cat_estatus_permiso);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_estatus_retorno_e9a02f40 ON public.ciitev_permiso_casa_rodante (clave_cat_estatus_retorno);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_forma_pago_05b19f8d ON public.ciitev_permiso_casa_rodante (clave_cat_forma_pago);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_modulo_30c8461d ON public.ciitev_permiso_casa_rodante (clave_cat_modulo);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_modulo_retorno_3e79339a ON public.ciitev_permiso_casa_rodante (clave_cat_modulo_retorno);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_motivo_baja_93a4e49c ON public.ciitev_permiso_casa_rodante (clave_cat_motivo_baja);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_tipo_captura_3b9bda19 ON public.ciitev_permiso_casa_rodante (clave_cat_tipo_captura);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_tipo_moneda_pago_7c284685 ON public.ciitev_permiso_casa_rodante (clave_cat_tipo_moneda_pago);
+-- CREATE INDEX ciitev_permiso_casa_rodante_clave_cat_tipo_retorno_6939fa91 ON public.ciitev_permiso_casa_rodante (clave_cat_tipo_retorno);
+-- CREATE INDEX ciitev_permiso_casa_rodante_id_importador_bff21c27 ON public.ciitev_permiso_casa_rodante (id_importador);
+
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_bandera_inicio_22ddfe84_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_bandera_remolq_639391cd_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_estado_destino_56e7493f_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_estatus_retorn_e9a02f40_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_tipo_captura_3b9bda19_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_roda_clave_cat_tipo_moneda_pa_7c284685_like;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodant_clave_cat_bandera_inicio_f_22ddfe84;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_bandera_remolque_639391cd;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_documento_iitv_3425cd61;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_estado_destino_56e7493f;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_estatus_permiso_34af4720;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_estatus_retorno_e9a02f40;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_forma_pago_05b19f8d;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_modulo_30c8461d;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_modulo_retorno_3e79339a;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_motivo_baja_93a4e49c;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_tipo_captura_3b9bda19;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_tipo_moneda_pago_7c284685;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_clave_cat_tipo_retorno_6939fa91;
+DROP INDEX IF EXISTS ciitev_permiso_casa_rodante_id_importador_bff21c27;
+
+-------- INDEX EMBARCACION
+-- CREATE INDEX ciitev_permiso_embarcaci_clave_cat_bandera_inicio_d4c1a49e_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_bandera_inicio_facultades varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcaci_clave_cat_bandera_remolq_4b63ca87_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcaci_clave_cat_estado_destino_c6bccefc_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_estado_destino varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcaci_clave_cat_estatus_retorn_0d4cb739_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_estatus_retorno varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcaci_clave_cat_tipo_moneda_pa_fa4f9a58_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_tipo_moneda_pago varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_bandera_inicio_f_d4c1a49e ON public.ciitev_permiso_embarcacion USING btree (clave_cat_bandera_inicio_facultades);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_bandera_remolque_4b63ca87 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_documento_iitv_4e5016bf ON public.ciitev_permiso_embarcacion USING btree (clave_cat_documento_iitv);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_estado_destino_c6bccefc ON public.ciitev_permiso_embarcacion USING btree (clave_cat_estado_destino);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_estatus_permiso_940aeb33 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_estatus_permiso);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_estatus_retorno_0d4cb739 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_estatus_retorno);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_forma_pago_73cdcad3 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_forma_pago);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_modulo_14dec904 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_modulo);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_modulo_retorno_1a6b1e42 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_modulo_retorno);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_motivo_baja_f9323ae7 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_motivo_baja);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_tipo_captura_f4c5c389 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_tipo_captura);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_tipo_captura_f4c5c389_like ON public.ciitev_permiso_embarcacion USING btree (clave_cat_tipo_captura varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_tipo_moneda_pago_fa4f9a58 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_tipo_moneda_pago);
+-- CREATE INDEX ciitev_permiso_embarcacion_clave_cat_tipo_retorno_3b3315b2 ON public.ciitev_permiso_embarcacion USING btree (clave_cat_tipo_retorno);
+-- CREATE INDEX ciitev_permiso_embarcacion_id_importador_f2d650df ON public.ciitev_permiso_embarcacion USING btree (id_importador);
+
+DROP INDEX IF EXISTS ciitev_permiso_embarcaci_clave_cat_bandera_inicio_d4c1a49e_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcaci_clave_cat_bandera_remolq_4b63ca87_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcaci_clave_cat_estado_destino_c6bccefc_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcaci_clave_cat_estatus_retorn_0d4cb739_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcaci_clave_cat_tipo_moneda_pa_fa4f9a58_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_bandera_inicio_f_d4c1a49e;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_bandera_remolque_4b63ca87;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_documento_iitv_4e5016bf;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_estado_destino_c6bccefc;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_estatus_permiso_940aeb33;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_estatus_retorno_0d4cb739;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_forma_pago_73cdcad3;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_modulo_14dec904;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_modulo_retorno_1a6b1e42;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_motivo_baja_f9323ae7;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_tipo_captura_f4c5c389;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_tipo_captura_f4c5c389_like;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_tipo_moneda_pago_fa4f9a58;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_clave_cat_tipo_retorno_3b3315b2;
+DROP INDEX IF EXISTS ciitev_permiso_embarcacion_id_importador_f2d650df;
+
+
+------------ INDEX SOLO SONORA
+-- CREATE INDEX ciitev_permiso_solo_sono_clave_cat_bandera_inicio_ae922064_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_bandera_inicio_facultades varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sono_clave_cat_bandera_remolq_b7e4a74d_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sono_clave_cat_estado_destino_048d6b35_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_estado_destino varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sono_clave_cat_estatus_retorn_2e15845e_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_estatus_retorno varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sono_clave_cat_tipo_moneda_pa_e3215920_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_tipo_moneda_pago varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_bandera_inicio_f_ae922064 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_bandera_inicio_facultades);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_bandera_remolque_b7e4a74d ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_estado_destino_048d6b35 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_estado_destino);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_estatus_permiso_4ddc3d8f ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_estatus_permiso);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_estatus_retorno_2e15845e ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_estatus_retorno);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_forma_pago_df9a0233 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_forma_pago);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_modulo_58ae4112 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_modulo);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_modulo_retorno_52938336 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_modulo_retorno);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_motivo_baja_8b7b072a ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_motivo_baja);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_tipo_captura_f7253780 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_tipo_captura);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_tipo_captura_f7253780_like ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_tipo_captura varchar_pattern_ops);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_tipo_moneda_pago_e3215920 ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_tipo_moneda_pago);
+-- CREATE INDEX ciitev_permiso_solo_sonora_clave_cat_tipo_retorno_b5f3fe1d ON public.ciitev_permiso_solo_sonora USING btree (clave_cat_tipo_retorno);
+-- CREATE INDEX ciitev_permiso_solo_sonora_id_importador_2612185f ON public.ciitev_permiso_solo_sonora USING btree (id_importador);
+
+DROP INDEX IF EXISTS ciitev_permiso_solo_sono_clave_cat_bandera_inicio_ae922064_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sono_clave_cat_bandera_remolq_b7e4a74d_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sono_clave_cat_estado_destino_048d6b35_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sono_clave_cat_estatus_retorn_2e15845e_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sono_clave_cat_tipo_moneda_pa_e3215920_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_bandera_inicio_f_ae922064;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_bandera_remolque_b7e4a74d;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_estado_destino_048d6b35;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_estatus_permiso_4ddc3d8f;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_estatus_retorno_2e15845e;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_forma_pago_df9a0233;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_modulo_58ae4112;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_modulo_retorno_52938336;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_motivo_baja_8b7b072a;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_tipo_captura_f7253780;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_tipo_captura_f7253780_like;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_tipo_moneda_pago_e3215920;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_clave_cat_tipo_retorno_b5f3fe1d;
+DROP INDEX IF EXISTS ciitev_permiso_solo_sonora_id_importador_2612185f;
+
+---------- INDEX REINGRESO
+-- CREATE INDEX ciitev_reingreso_clave_cat_bandera_captura_manual_77506b07 ON public.ciitev_reingreso USING btree (clave_cat_bandera_captura_manual);
+-- CREATE INDEX ciitev_reingreso_clave_cat_bandera_captura_manual_77506b07_like ON public.ciitev_reingreso USING btree (clave_cat_bandera_captura_manual varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_bandera_remolque_8951c33d ON public.ciitev_reingreso USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_reingreso_clave_cat_bandera_remolque_8951c33d_like ON public.ciitev_reingreso USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_documento_iitv_88dbb267 ON public.ciitev_reingreso USING btree (clave_cat_documento_iitv);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estado_destino_f4aa9e35 ON public.ciitev_reingreso USING btree (clave_cat_estado_destino);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estado_destino_f4aa9e35_like ON public.ciitev_reingreso USING btree (clave_cat_estado_destino varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estado_retorno_fb37b92a ON public.ciitev_reingreso USING btree (clave_cat_estado_retorno);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estado_retorno_fb37b92a_like ON public.ciitev_reingreso USING btree (clave_cat_estado_retorno varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estatus_documento_3901ef6a ON public.ciitev_reingreso USING btree (clave_cat_estatus_documento);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estatus_reingreso_7f6c4592 ON public.ciitev_reingreso USING btree (clave_cat_estatus_reingreso);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estatus_reingreso_7f6c4592_like ON public.ciitev_reingreso USING btree (clave_cat_estatus_reingreso varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estatus_retorno_d0cd170c ON public.ciitev_reingreso USING btree (clave_cat_estatus_retorno);
+-- CREATE INDEX ciitev_reingreso_clave_cat_estatus_retorno_d0cd170c_like ON public.ciitev_reingreso USING btree (clave_cat_estatus_retorno varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_modulo_egreso_aa1fd4b7 ON public.ciitev_reingreso USING btree (clave_cat_modulo_egreso);
+-- CREATE INDEX ciitev_reingreso_clave_cat_modulo_ingreso_1a2c3708 ON public.ciitev_reingreso USING btree (clave_cat_modulo_ingreso);
+-- CREATE INDEX ciitev_reingreso_clave_cat_tipo_egreso_arco_6b1aa4f7 ON public.ciitev_reingreso USING btree (clave_cat_tipo_egreso_arco);
+-- CREATE INDEX ciitev_reingreso_clave_cat_tipo_egreso_arco_6b1aa4f7_like ON public.ciitev_reingreso USING btree (clave_cat_tipo_egreso_arco varchar_pattern_ops);
+-- CREATE INDEX ciitev_reingreso_clave_cat_tipo_retorno_reingreso_fafa6361 ON public.ciitev_reingreso USING btree (clave_cat_tipo_retorno_reingreso);
+
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_bandera_captura_manual_77506b07;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_bandera_captura_manual_77506b07_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_bandera_remolque_8951c33d;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_bandera_remolque_8951c33d_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_documento_iitv_88dbb267;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estado_destino_f4aa9e35;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estado_destino_f4aa9e35_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estado_retorno_fb37b92a;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estado_retorno_fb37b92a_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estatus_documento_3901ef6a;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estatus_reingreso_7f6c4592;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estatus_reingreso_7f6c4592_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estatus_retorno_d0cd170c;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_estatus_retorno_d0cd170c_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_modulo_egreso_aa1fd4b7;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_modulo_ingreso_1a2c3708;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_tipo_egreso_arco_6b1aa4f7;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_tipo_egreso_arco_6b1aa4f7_like;
+DROP INDEX IF EXISTS ciitev_reingreso_clave_cat_tipo_retorno_reingreso_fafa6361;
+
+---------- INDEX REMOLQUE
+-- CREATE INDEX ciitev_remolque_clave_cat_clase_remolque_7430d5d8 ON public.ciitev_remolque USING btree (clave_cat_clase_remolque);
+-- CREATE INDEX ciitev_remolque_clave_cat_clase_remolque_7430d5d8_like ON public.ciitev_remolque USING btree (clave_cat_clase_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_remolque_clave_cat_tipo_remolque_5136a6d9 ON public.ciitev_remolque USING btree (clave_cat_tipo_remolque);
+-- CREATE INDEX ciitev_remolque_clave_cat_tipo_remolque_5136a6d9_like ON public.ciitev_remolque USING btree (clave_cat_tipo_remolque varchar_pattern_ops);
+
+DROP INDEX IF EXISTS ciitev_remolque_clave_cat_clase_remolque_7430d5d8;
+DROP INDEX IF EXISTS ciitev_remolque_clave_cat_clase_remolque_7430d5d8_like;
+DROP INDEX IF EXISTS ciitev_remolque_clave_cat_tipo_remolque_5136a6d9;
+DROP INDEX IF EXISTS ciitev_remolque_clave_cat_tipo_remolque_5136a6d9_like;
+
+----------- INDEX TRAMITADOR
+-- CREATE INDEX ciitev_tramitador_clave_cat_calidad_migratoria_fe2c82a9 ON public.ciitev_tramitador USING btree (clave_cat_calidad_migratoria);
+-- CREATE INDEX ciitev_tramitador_clave_cat_calidad_migratoria_fe2c82a9_like ON public.ciitev_tramitador USING btree (clave_cat_calidad_migratoria varchar_pattern_ops);
+-- CREATE INDEX ciitev_tramitador_clave_cat_documento_identi_1fa4c212 ON public.ciitev_tramitador USING btree (clave_cat_documento_identificacion_id);
+
+DROP INDEX IF EXISTS ciitev_tramitador_clave_cat_calidad_migratoria_fe2c82a9;
+DROP INDEX IF EXISTS ciitev_tramitador_clave_cat_calidad_migratoria_fe2c82a9_like;
+DROP INDEX IF EXISTS ciitev_tramitador_clave_cat_documento_identi_1fa4c212;
+
+---------- INDEX VEHICULO
+-- CREATE INDEX ciitev_vehiculo_clave_cat_bandera_import_9319f21c_like ON public.ciitev_vehiculo USING btree (clave_cat_bandera_importador_propietario varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_bandera_importad_9319f21c ON public.ciitev_vehiculo USING btree (clave_cat_bandera_importador_propietario);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_bandera_remolque_832df165 ON public.ciitev_vehiculo USING btree (clave_cat_bandera_remolque);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_bandera_remolque_832df165_like ON public.ciitev_vehiculo USING btree (clave_cat_bandera_remolque varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_clase_vehiculo_ff11c13a ON public.ciitev_vehiculo USING btree (clave_cat_clase_vehiculo);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_clase_vehiculo_ff11c13a_like ON public.ciitev_vehiculo USING btree (clave_cat_clase_vehiculo varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_marca_vehiculo_5581fe11 ON public.ciitev_vehiculo USING btree (clave_cat_marca_vehiculo);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_marca_vehiculo_5581fe11_like ON public.ciitev_vehiculo USING btree (clave_cat_marca_vehiculo varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_tipo_vehiculo_00a94c4a ON public.ciitev_vehiculo USING btree (clave_cat_tipo_vehiculo);
+-- CREATE INDEX ciitev_vehiculo_clave_cat_tipo_vehiculo_00a94c4a_like ON public.ciitev_vehiculo USING btree (clave_cat_tipo_vehiculo varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_id_importador_8c521ef1 ON public.ciitev_vehiculo USING btree (id_importador);
+-- CREATE INDEX ciitev_vehiculo_id_propietario_0b73b448 ON public.ciitev_vehiculo USING btree (id_propietario);
+
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_bandera_import_9319f21c_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_bandera_importad_9319f21c;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_bandera_remolque_832df165;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_bandera_remolque_832df165_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_clase_vehiculo_ff11c13a;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_clase_vehiculo_ff11c13a_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_marca_vehiculo_5581fe11;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_marca_vehiculo_5581fe11_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_tipo_vehiculo_00a94c4a;
+DROP INDEX IF EXISTS ciitev_vehiculo_clave_cat_tipo_vehiculo_00a94c4a_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_id_importador_8c521ef1;
+DROP INDEX IF EXISTS ciitev_vehiculo_id_propietario_0b73b448;
+
+-------- INDEX VEHICULO REMOLCADO
+-- CREATE INDEX ciitev_vehiculo_remolcad_clave_clase_vehiculo_rem_3188a2b8_like ON public.ciitev_vehiculo_remolcado USING btree (clave_clase_vehiculo_remolcado varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_remolcad_clave_tipo_vehiculo_remo_34d158bc_like ON public.ciitev_vehiculo_remolcado USING btree (clave_tipo_vehiculo_remolcado varchar_pattern_ops);
+-- CREATE INDEX ciitev_vehiculo_remolcado_clave_clase_vehiculo_remol_3188a2b8 ON public.ciitev_vehiculo_remolcado USING btree (clave_clase_vehiculo_remolcado);
+-- CREATE INDEX ciitev_vehiculo_remolcado_clave_tipo_vehiculo_remolc_34d158bc ON public.ciitev_vehiculo_remolcado USING btree (clave_tipo_vehiculo_remolcado);
+
+DROP INDEX IF EXISTS ciitev_vehiculo_remolcad_clave_clase_vehiculo_rem_3188a2b8_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_remolcad_clave_tipo_vehiculo_remo_34d158bc_like;
+DROP INDEX IF EXISTS ciitev_vehiculo_remolcado_clave_clase_vehiculo_remol_3188a2b8;
+DROP INDEX IF EXISTS ciitev_vehiculo_remolcado_clave_tipo_vehiculo_remolc_34d158bc;
