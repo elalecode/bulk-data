@@ -11,4 +11,6 @@ services:
       - .:/code
     command:
       - /start
+    ports:
+      - 5432:5432
 
