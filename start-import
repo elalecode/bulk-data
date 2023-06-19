@@ -859,7 +859,7 @@ do
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
-    FROM '$archivo'
+    FROM '$archivo'   WITH ENCODING iso-8859-1
         HAVING FIELDS
         (
             clave_cat_documento_identificacion,
