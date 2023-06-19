@@ -717,93 +717,26 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         VEHICULO
 ################################################
 
-for archivo in $source_file/vehiculo/*.txt.file
-do
-echo "Importando archivo..."
-echo $archivo
-
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'
-        HAVING FIELDS
-        (
-            clave_cat_clase_vehiculo,
-            clave_cat_marca_vehiculo,
-            clave_cat_tipo_vehiculo,
-            modelo,
-            numero_serie,
-            placas,
-            clave_cat_bandera_importador_propietario,
-            clave_cat_bandera_remolque,
-            numero_pedimento,
-            folio,
-            nombre,
-            apellidoPaterno,
-            apellidoMaterno,
-            calle,
-            numero,
-            claveArrendador,
-            claveCategoriaFiscal,
-            ciudad
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_vehiculo
-        (
-            clave_cat_clase_vehiculo,
-            clave_cat_marca_vehiculo,
-            clave_cat_tipo_vehiculo,
-            modelo,
-            numero_serie,
-            placas,
-            clave_cat_bandera_importador_propietario,
-            clave_cat_bandera_remolque,
-            numero_pedimento,
-            permiso int using "folio"
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
-    
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-EOF
-
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
-
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
-
-
-#################################################
-###         EMBARCACION
-################################################
-
-# for archivo in $source_file/embarcacion/*.txt
+# for archivo in $source_file/vehiculo/*.txt.file
 # do
+# echo "Importando archivo..."
+# echo $archivo
+
 # config_file=$(mktemp)
 # cat << EOF > $config_file
 # LOAD CSV
-#     FROM '$archivo'  WITH ENCODING iso-8859-1
+#     FROM '$archivo'
 #         HAVING FIELDS
 #         (
-#             clave_cat_clase_embarcacion,
-#             clave_cat_marca_embarcacion,
-#             clave_cat_tipo_embarcacion,
+#             clave_cat_clase_vehiculo,
+#             clave_cat_marca_vehiculo,
+#             clave_cat_tipo_vehiculo,
 #             modelo,
 #             numero_serie,
+#             placas,
 #             clave_cat_bandera_importador_propietario,
 #             clave_cat_bandera_remolque,
-#             numero_motor,
-#             numero_motor_1,
-#             marca_otro,
-#             tipo_otro,
-#             matricula,
+#             numero_pedimento,
 #             folio,
 #             nombre,
 #             apellidoPaterno,
@@ -815,20 +748,17 @@ done;
 #             ciudad
 #         )
 #     INTO $database_url
-#         TARGET TABLE $target_table_embarcacion
+#         TARGET TABLE $target_table_vehiculo
 #         (
-#             clave_cat_clase_embarcacion,
-#             clave_cat_marca_embarcacion,
-#             clave_cat_tipo_embarcacion,
+#             clave_cat_clase_vehiculo,
+#             clave_cat_marca_vehiculo,
+#             clave_cat_tipo_vehiculo,
 #             modelo,
 #             numero_serie,
+#             placas,
 #             clave_cat_bandera_importador_propietario,
 #             clave_cat_bandera_remolque,
-#             numero_motor,
-#             numero_motor_1,
-#             marca_otro,
-#             tipo_otro,
-#             matricula,
+#             numero_pedimento,
 #             permiso int using "folio"
 #         )
 #     WITH 
@@ -848,6 +778,76 @@ done;
 # echo "Delete config file temp"
 # rm $config_file
 # done;
+
+
+#################################################
+###         EMBARCACION
+################################################
+
+for archivo in $source_file/embarcacion/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'
+        HAVING FIELDS
+        (
+            clave_cat_clase_embarcacion,
+            clave_cat_marca_embarcacion,
+            clave_cat_tipo_embarcacion,
+            modelo,
+            numero_serie,
+            clave_cat_bandera_importador_propietario,
+            clave_cat_bandera_remolque,
+            numero_motor,
+            numero_motor_1,
+            marca_otro,
+            tipo_otro,
+            matricula,
+            folio,
+            nombre,
+            apellidoPaterno,
+            apellidoMaterno,
+            calle,
+            numero,
+            claveArrendador,
+            claveCategoriaFiscal,
+            ciudad
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_embarcacion
+        (
+            clave_cat_clase_embarcacion,
+            clave_cat_marca_embarcacion,
+            clave_cat_tipo_embarcacion,
+            modelo,
+            numero_serie,
+            clave_cat_bandera_importador_propietario,
+            clave_cat_bandera_remolque,
+            numero_motor,
+            numero_motor_1,
+            marca_otro,
+            tipo_otro,
+            matricula,
+            permiso int using "folio"
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
 
 
 #################################################
