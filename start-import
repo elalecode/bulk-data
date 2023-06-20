@@ -379,6 +379,89 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 
 
 #################################################
+###         PERMISO DE CASA RODANTE
+################################################
+
+for archivo in $source_file/permiso_solo_sonora/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'
+        HAVING FIELDS
+        (
+            folio,
+            fecha_alta [date format 'DDMMYYYY'],
+            tipo_cambio,
+            numero_personas_viajan_vehiculo,
+            fecha_vencimiento_permiso [date format 'DDMMYYYY'],
+            certificado_retorno,
+            fecha_ultimo_ingreso [date format 'DDMMYYYY'],
+            fecha_expedicion_permiso [date format 'DDMMYYYY'],
+            dias_disponibles_iniciales,
+            clave_cat_bandera_inicio_facultades,
+            clave_cat_bandera_remolque,
+            clave_cat_estado_destino,
+            clave_cat_estatus_permiso,
+            clave_cat_estatus_retorno,
+            clave_cat_forma_pago,
+            clave_cat_modulo,
+            clave_cat_modulo_retorno,
+            clave_cat_motivo_baja,
+            clave_cat_tipo_moneda_pago,
+            clave_cat_tipo_retorno,
+            fecha_maxima_retorno [date format 'DDMMYYYY'],
+            fecha_retorno_definitivamente [date format 'DDMMYYYY'],
+            clave_cat_tipo_captura
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_permiso_solo_sonora
+        (
+            folio,
+            fecha_alta,
+            clave_cat_modulo,
+            tipo_cambio,
+            numero_personas_viajan_vehiculo,
+            clave_cat_estado_destino,
+            clave_cat_estatus_permiso,
+            fecha_vencimiento_permiso,
+            clave_cat_tipo_retorno,
+            clave_cat_modulo_retorno,
+            clave_cat_motivo_baja,
+            clave_cat_estatus_retorno,
+            certificado_retorno,
+            fecha_ultimo_ingreso,
+            fecha_expedicion_permiso,
+            clave_cat_forma_pago,
+            clave_cat_tipo_moneda_pago,
+            clave_cat_tipo_captura,
+            dias_disponibles_iniciales,
+            clave_cat_bandera_inicio_facultades,
+            fecha_retorno_definitivamente,
+            fecha_maxima_retorno,
+            clave_cat_bandera_remolque
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
+
+
+#################################################
 ###         VEHICULO REMOLCADO
 ################################################
 
@@ -592,65 +675,65 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         INTERNADOR FRONTERIZO
 ################################################
 
-for archivo in $source_file/internador_fronterizo/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo' WITH ENCODING iso-8859-1
-        HAVING FIELDS
-        (
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            calle,
-            numero,
-            codigo_postal,
-            ciudad,
-            clave_cat_estado,
-            numero_licencia,
-            rfc,
-            telefono,
-            email,
-            folio_permiso,
-            colonia
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_internador_fronterizo
-        (
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            calle,
-            numero,
-            codigo_postal,
-            ciudad,
-            clave_cat_estado,
-            numero_licencia,
-            rfc,
-            telefono,
-            email,
-            folio_permiso,
-            colonia
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
+# for archivo in $source_file/internador_fronterizo/*.txt
+# do
+# config_file=$(mktemp)
+# cat << EOF > $config_file
+# LOAD CSV
+#     FROM '$archivo' WITH ENCODING iso-8859-1
+#         HAVING FIELDS
+#         (
+#             nombre,
+#             apellido_paterno,
+#             apellido_materno,
+#             calle,
+#             numero,
+#             codigo_postal,
+#             ciudad,
+#             clave_cat_estado,
+#             numero_licencia,
+#             rfc,
+#             telefono,
+#             email,
+#             folio_permiso,
+#             colonia
+#         )
+#     INTO $database_url
+#         TARGET TABLE $target_table_internador_fronterizo
+#         (
+#             nombre,
+#             apellido_paterno,
+#             apellido_materno,
+#             calle,
+#             numero,
+#             codigo_postal,
+#             ciudad,
+#             clave_cat_estado,
+#             numero_licencia,
+#             rfc,
+#             telefono,
+#             email,
+#             folio_permiso,
+#             colonia
+#         )
+#     WITH 
+#         drop indexes,
+#         fields terminated by '|', 
+#         skip header = 1, 
+#         fields optionally enclosed by '"' 
     
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
 
-EOF
+# EOF
 
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
+# # Ejecutar la carga utilizando pgloader
+# echo "Launch pgloader"
+# pgloader $config_file
 
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
+# # Eliminar el archivo de configuración temporal
+# echo "Delete config file temp"
+# rm $config_file
+# done;
 
 
 #################################################
