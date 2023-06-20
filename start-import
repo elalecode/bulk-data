@@ -547,45 +547,45 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###            INICIO FACULTAD
 ################################################
 
-# for archivo in $source_file/inicio_facultad/*.txt
-# do
-# config_file=$(mktemp)
-# cat << EOF > $config_file
-# LOAD CSV
-#     FROM '$archivo'
-#         HAVING FIELDS
-#         (
-#             permiso,
-#             estatus,
-#             motivo_inicio_facultades,
-#             motivo_termino_facultades
-#         )
-#     INTO $database_url
-#         TARGET TABLE $target_table_inicio_facultad
-#         (
-#             permiso,
-#             estatus,
-#             motivo_inicio_facultades,
-#             motivo_termino_facultades
-#         )
-#     WITH 
-#         drop indexes,
-#         fields terminated by '|', 
-#         skip header = 1, 
-#         fields optionally enclosed by '"' 
+for archivo in $source_file/inicio_facultad/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo' WITH ENCODING iso-8859-1
+        HAVING FIELDS
+        (
+            permiso,
+            estatus,
+            motivo_inicio_facultades,
+            motivo_termino_facultades
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_inicio_facultad
+        (
+            permiso,
+            estatus,
+            motivo_inicio_facultades,
+            motivo_termino_facultades
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
     
-#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
 
-# EOF
+EOF
 
-# # Ejecutar la carga utilizando pgloader
-# echo "Launch pgloader"
-# pgloader $config_file
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
 
-# # Eliminar el archivo de configuración temporal
-# echo "Delete config file temp"
-# rm $config_file
-# done;
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
 
 
 #################################################
@@ -941,50 +941,50 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###             TRAMITADOR
 ################################################
 
-for archivo in $source_file/tramitador/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'  WITH ENCODING iso-8859-1
-        HAVING FIELDS
-        (
-            clave_cat_calidad_migratoria,
-            clave_cat_documento_identificacion_temp,
-            numero_documento,
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            folio
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_tramitador
-        (
-            clave_cat_calidad_migratoria,
-            clave_cat_documento_identificacion_temp,
-            numero_documento,
-            nombre,
-            apellido_paterno,
-            apellido_materno,
-            permiso int using "folio"
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
+# for archivo in $source_file/tramitador/*.txt
+# do
+# config_file=$(mktemp)
+# cat << EOF > $config_file
+# LOAD CSV
+#     FROM '$archivo'  WITH ENCODING iso-8859-1
+#         HAVING FIELDS
+#         (
+#             clave_cat_calidad_migratoria,
+#             clave_cat_documento_identificacion_temp,
+#             numero_documento,
+#             nombre,
+#             apellido_paterno,
+#             apellido_materno,
+#             folio
+#         )
+#     INTO $database_url
+#         TARGET TABLE $target_table_tramitador
+#         (
+#             clave_cat_calidad_migratoria,
+#             clave_cat_documento_identificacion_temp,
+#             numero_documento,
+#             nombre,
+#             apellido_paterno,
+#             apellido_materno,
+#             permiso int using "folio"
+#         )
+#     WITH 
+#         drop indexes,
+#         fields terminated by '|', 
+#         skip header = 1, 
+#         fields optionally enclosed by '"' 
     
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-EOF
+#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+# EOF
 
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
+# # Ejecutar la carga utilizando pgloader
+# echo "Launch pgloader"
+# pgloader $config_file
 
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
+# # Eliminar el archivo de configuración temporal
+# echo "Delete config file temp"
+# rm $config_file
+# done;
 
 #################################################
 ###         PROPIETARIO - EMBARCACION
