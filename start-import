@@ -386,7 +386,6 @@ for archivo in $source_file/permiso_solo_sonora/*.txt
 do
 echo "Archivo: $archivo"
 echo "Cargando configuracion..."
-
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
@@ -395,27 +394,27 @@ LOAD CSV
         (
             folio,
             fecha_alta [date format 'DDMMYYYY'],
+            clave_cat_modulo,
             tipo_cambio,
             numero_personas_viajan_vehiculo,
+            clave_cat_estado_destino,
+            clave_cat_estatus_permiso,
             fecha_vencimiento_permiso [date format 'DDMMYYYY'],
+            clave_cat_tipo_retorno,
+            clave_cat_modulo_retorno,
+            clave_cat_motivo_baja,
+            clave_cat_estatus_retorno,
             certificado_retorno,
             fecha_ultimo_ingreso [date format 'DDMMYYYY'],
             fecha_expedicion_permiso [date format 'DDMMYYYY'],
+            clave_cat_forma_pago,
+            clave_cat_tipo_moneda_pago,
+            clave_cat_tipo_captura,
             dias_disponibles_iniciales,
             clave_cat_bandera_inicio_facultades,
-            clave_cat_bandera_remolque,
-            clave_cat_estado_destino,
-            clave_cat_estatus_permiso,
-            clave_cat_estatus_retorno,
-            clave_cat_forma_pago,
-            clave_cat_modulo,
-            clave_cat_modulo_retorno,
-            clave_cat_motivo_baja,
-            clave_cat_tipo_moneda_pago,
-            clave_cat_tipo_retorno,
-            fecha_maxima_retorno [date format 'DDMMYYYY'],
             fecha_retorno_definitivamente [date format 'DDMMYYYY'],
-            clave_cat_tipo_captura
+            fecha_maxima_retorno [date format 'DDMMYYYY'],
+            clave_cat_bandera_remolque
         )
     INTO $database_url
         TARGET TABLE $target_table_permiso_solosonora
@@ -456,7 +455,7 @@ EOF
 
 # Ejecutar la carga utilizando pgloader
 echo "Launch pgloader"
-pgloader --debug --verbose $config_file
+pgloader $config_file
 
 # Eliminar el archivo de configuración temporal
 echo "Delete config file temp"

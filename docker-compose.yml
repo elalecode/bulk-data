@@ -11,4 +11,10 @@ services:
       - .:/code
     command:
       - /start
+    # networks:
+    #   - migraciones_default
     network_mode: "host"
+
+# networks:
+#   migraciones_default:
+#     external: true
