@@ -415,7 +415,7 @@ LOAD CSV
             clave_cat_tipo_captura
         )
     INTO $database_url
-        TARGET TABLE $target_table_permiso_solo_sonora
+        TARGET TABLE $target_table_permiso_solosonora
         (
             folio,
             fecha_alta,
