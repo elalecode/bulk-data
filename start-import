@@ -456,7 +456,7 @@ EOF
 
 # Ejecutar la carga utilizando pgloader
 echo "Launch pgloader"
-pgloader $config_file
+pgloader --debug --verbose $config_file
 
 # Eliminar el archivo de configuración temporal
 echo "Delete config file temp"
