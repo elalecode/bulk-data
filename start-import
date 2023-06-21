@@ -1076,74 +1076,7 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###             PRORROGA
 ################################################
 
-for archivo in $source_file/prorroga/*.txt
-do
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'  WITH ENCODING iso-8859-1
-        HAVING FIELDS
-        (
-            folio_permiso,
-            consecutivo_prorroga,
-            fecha_actualizacion_registro [date format 'DD/MM/YYYY HH24:MI:SS'],
-            numero_forma_migratoria,
-            clave_cat_modulo_efectua_prorroga,
-            clave_cat_turno_prorroga,
-            fecha_ingreso_anterior [date format 'DDMMYYYY'],
-            hora_internacion_anterior [date format 'HH24:MI:SS'],
-            dias_disponibles_anteriores,
-            numero_ingresos_anteriores,
-            dias_disponibles_prorroga,
-            fecha_maximo_retorno_prorroga [date format 'DDMMYYYY'],
-            numero_forma_migratoria_prorroga,
-            fecha_prorroga [date format 'DDMMYYYY'],
-            hora_prorroga [date format 'HH24:MI:SS'],
-            fecha_ultima_prorroga
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_prorroga
-        (
-            folio_permiso,
-            consecutivo_prorroga,
-            fecha_actualizacion_registro,
-            numero_forma_migratoria,
-            clave_cat_modulo_efectua_prorroga,
-            clave_cat_turno_prorroga,
-            fecha_ingreso_anterior,
-            hora_internacion_anterior,
-            dias_disponibles_anteriores,
-            numero_ingresos_anteriores,
-            dias_disponibles_prorroga,
-            fecha_maximo_retorno_prorroga,
-            numero_forma_migratoria_prorroga,
-            fecha_prorroga,
-            hora_prorroga
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
-    
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
-EOF
-
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
-
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
-
-
-#################################################
-###         PROPIETARIO - EMBARCACION
-################################################
-
-# for archivo in /code/ciitev_main/txt/propietario_embarcacion/*
+# for archivo in $source_file/prorroga/*.txt
 # do
 # config_file=$(mktemp)
 # cat << EOF > $config_file
@@ -1151,41 +1084,41 @@ done;
 #     FROM '$archivo'  WITH ENCODING iso-8859-1
 #         HAVING FIELDS
 #         (
-#             clave_cat_clase_embarcacion,
-#             clave_cat_marca_embarcacion,
-#             clave_cat_tipo_embarcacion,
-#             modelo,
-#             numero_serie,
-#             clave_cat_bandera_importador_propietario,
-#             clave_cat_bandera_remolque,
-#             numero_motor,
-#             numero_motor_1,
-#             marca_otro,
-#             tipo_otro,
-#             matricula,
-#             folio,
-#             nombre,
-#             apellidoPaterno,
-#             apellidoMaterno,
-#             calle,
-#             numero,
-#             claveArrendador,
-#             claveCategoriaFiscal,
-#             ciudad
+#             folio_permiso,
+#             consecutivo_prorroga,
+#             fecha_actualizacion_registro [date format 'DD/MM/YYYY HH24:MI:SS'],
+#             numero_forma_migratoria,
+#             clave_cat_modulo_efectua_prorroga,
+#             clave_cat_turno_prorroga,
+#             fecha_ingreso_anterior [date format 'DDMMYYYY'],
+#             hora_internacion_anterior [date format 'HH24:MI:SS'],
+#             dias_disponibles_anteriores,
+#             numero_ingresos_anteriores,
+#             dias_disponibles_prorroga,
+#             fecha_maximo_retorno_prorroga [date format 'DDMMYYYY'],
+#             numero_forma_migratoria_prorroga,
+#             fecha_prorroga [date format 'DDMMYYYY'],
+#             hora_prorroga [date format 'HH24:MI:SS'],
+#             fecha_ultima_prorroga
 #         )
 #     INTO $database_url
-#         TARGET TABLE $target_table_propietario
+#         TARGET TABLE $target_table_prorroga
 #         (
-#             nombre_propietario_arrendador text using "nombre",
-#             apellido_paterno text using "apellidoPaterno",
-#             apellido_materno text using "apellidoMaterno",
-#             calle,
-#             numero,
-#             ciudad,
-#             activo,
-#             clave_cat_arrendador text using "claveArrendador",
-#             clave_cat_categoria_fiscal text using "claveCategoriaFiscal",
-#             permiso int using "folio"
+#             folio_permiso,
+#             consecutivo_prorroga,
+#             fecha_actualizacion_registro,
+#             numero_forma_migratoria,
+#             clave_cat_modulo_efectua_prorroga,
+#             clave_cat_turno_prorroga,
+#             fecha_ingreso_anterior,
+#             hora_internacion_anterior,
+#             dias_disponibles_anteriores,
+#             numero_ingresos_anteriores,
+#             dias_disponibles_prorroga,
+#             fecha_maximo_retorno_prorroga,
+#             numero_forma_migratoria_prorroga,
+#             fecha_prorroga,
+#             hora_prorroga
 #         )
 #     WITH 
 #         drop indexes,
@@ -1204,3 +1137,58 @@ done;
 # echo "Delete config file temp"
 # rm $config_file
 # done;
+
+
+#################################################
+###         PROPIETARIO - EMBARCACION
+################################################
+
+for archivo in $source_file/propietarios/embarcacion/*
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'  WITH ENCODING iso-8859-1
+        HAVING FIELDS
+        (
+            permiso,
+            nombre_propietario_arrendador,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            clave_cat_arrendador,
+            clave_cat_categoria_fiscal,
+            ciudad
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_propietario
+        (
+            nombre_propietario_arrendador,
+            apellido_paterno,
+            apellido_materno,
+            calle,
+            numero,
+            ciudad,
+            clave_cat_arrendador,
+            clave_cat_categoria_fiscal,
+            permiso
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|',
+        fields not enclosed,
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
