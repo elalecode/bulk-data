@@ -1143,12 +1143,67 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         PROPIETARIO - EMBARCACION
 ################################################
 
-for archivo in $source_file/propietarios/embarcacion/*
+# for archivo in $source_file/propietarios/embarcacion/*
+# do
+# config_file=$(mktemp)
+# cat << EOF > $config_file
+# LOAD CSV
+#     FROM '$archivo'  WITH ENCODING iso-8859-1
+#         HAVING FIELDS
+#         (
+#             permiso,
+#             nombre_propietario_arrendador,
+#             apellido_paterno,
+#             apellido_materno,
+#             calle,
+#             numero,
+#             clave_cat_arrendador,
+#             clave_cat_categoria_fiscal,
+#             ciudad
+#         )
+#     INTO $database_url
+#         TARGET TABLE $target_table_propietario
+#         (
+#             nombre_propietario_arrendador,
+#             apellido_paterno,
+#             apellido_materno,
+#             calle,
+#             numero,
+#             ciudad,
+#             clave_cat_arrendador,
+#             clave_cat_categoria_fiscal,
+#             permiso
+#         )
+#     WITH 
+#         drop indexes,
+#         fields terminated by '|',
+#         fields not enclosed,
+#         skip header = 1, 
+#         fields optionally enclosed by '"' 
+    
+#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+# EOF
+
+# # Ejecutar la carga utilizando pgloader
+# echo "Launch pgloader"
+# pgloader $config_file
+
+# # Eliminar el archivo de configuración temporal
+# echo "Delete config file temp"
+# rm $config_file
+# done;
+
+
+#################################################
+###         PROPIETARIO - CASA RODANTE
+################################################
+
+for archivo in $source_file/propietarios/casa_rodante/*.txt
 do
 config_file=$(mktemp)
 cat << EOF > $config_file
 LOAD CSV
-    FROM '$archivo'  WITH ENCODING iso-8859-1
+    FROM '$archivo'
         HAVING FIELDS
         (
             permiso,
@@ -1176,8 +1231,7 @@ LOAD CSV
         )
     WITH 
         drop indexes,
-        fields terminated by '|',
-        fields not enclosed,
+        fields terminated by '|', 
         skip header = 1, 
         fields optionally enclosed by '"' 
     
