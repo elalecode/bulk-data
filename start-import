@@ -382,85 +382,85 @@ database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration
 ###         PERMISO SOLO SONORA
 ################################################
 
-for archivo in $source_file/permiso_solo_sonora/*.txt
-do
-echo "Archivo: $archivo"
-echo "Cargando configuracion..."
-config_file=$(mktemp)
-cat << EOF > $config_file
-LOAD CSV
-    FROM '$archivo'
-        HAVING FIELDS
-        (
-            folio,
-            fecha_alta [date format 'DDMMYYYY'],
-            clave_cat_modulo,
-            tipo_cambio,
-            numero_personas_viajan_vehiculo,
-            clave_cat_estado_destino,
-            clave_cat_estatus_permiso,
-            fecha_vencimiento_permiso [date format 'DDMMYYYY'],
-            clave_cat_tipo_retorno,
-            clave_cat_modulo_retorno,
-            clave_cat_motivo_baja,
-            clave_cat_estatus_retorno,
-            certificado_retorno,
-            fecha_ultimo_ingreso [date format 'DDMMYYYY'],
-            fecha_expedicion_permiso [date format 'DDMMYYYY'],
-            clave_cat_forma_pago,
-            clave_cat_tipo_moneda_pago,
-            clave_cat_tipo_captura,
-            dias_disponibles_iniciales,
-            clave_cat_bandera_inicio_facultades,
-            fecha_retorno_definitivamente [date format 'DDMMYYYY'],
-            fecha_maxima_retorno [date format 'DDMMYYYY'],
-            clave_cat_bandera_remolque
-        )
-    INTO $database_url
-        TARGET TABLE $target_table_permiso_solosonora
-        (
-            folio,
-            fecha_alta,
-            clave_cat_modulo,
-            tipo_cambio,
-            numero_personas_viajan_vehiculo,
-            clave_cat_estado_destino,
-            clave_cat_estatus_permiso,
-            fecha_vencimiento_permiso,
-            clave_cat_tipo_retorno,
-            clave_cat_modulo_retorno,
-            clave_cat_motivo_baja,
-            clave_cat_estatus_retorno,
-            certificado_retorno,
-            fecha_ultimo_ingreso,
-            fecha_expedicion_permiso,
-            clave_cat_forma_pago,
-            clave_cat_tipo_moneda_pago,
-            clave_cat_tipo_captura,
-            dias_disponibles_iniciales,
-            clave_cat_bandera_inicio_facultades,
-            fecha_retorno_definitivamente,
-            fecha_maxima_retorno,
-            clave_cat_bandera_remolque
-        )
-    WITH 
-        drop indexes,
-        fields terminated by '|', 
-        skip header = 1, 
-        fields optionally enclosed by '"' 
+# for archivo in $source_file/permiso_solo_sonora/*.txt
+# do
+# echo "Archivo: $archivo"
+# echo "Cargando configuracion..."
+# config_file=$(mktemp)
+# cat << EOF > $config_file
+# LOAD CSV
+#     FROM '$archivo'
+#         HAVING FIELDS
+#         (
+#             folio,
+#             fecha_alta [date format 'DDMMYYYY'],
+#             clave_cat_modulo,
+#             tipo_cambio,
+#             numero_personas_viajan_vehiculo,
+#             clave_cat_estado_destino,
+#             clave_cat_estatus_permiso,
+#             fecha_vencimiento_permiso [date format 'DDMMYYYY'],
+#             clave_cat_tipo_retorno,
+#             clave_cat_modulo_retorno,
+#             clave_cat_motivo_baja,
+#             clave_cat_estatus_retorno,
+#             certificado_retorno,
+#             fecha_ultimo_ingreso [date format 'DDMMYYYY'],
+#             fecha_expedicion_permiso [date format 'DDMMYYYY'],
+#             clave_cat_forma_pago,
+#             clave_cat_tipo_moneda_pago,
+#             clave_cat_tipo_captura,
+#             dias_disponibles_iniciales,
+#             clave_cat_bandera_inicio_facultades,
+#             fecha_retorno_definitivamente [date format 'DDMMYYYY'],
+#             fecha_maxima_retorno [date format 'DDMMYYYY'],
+#             clave_cat_bandera_remolque
+#         )
+#     INTO $database_url
+#         TARGET TABLE $target_table_permiso_solosonora
+#         (
+#             folio,
+#             fecha_alta,
+#             clave_cat_modulo,
+#             tipo_cambio,
+#             numero_personas_viajan_vehiculo,
+#             clave_cat_estado_destino,
+#             clave_cat_estatus_permiso,
+#             fecha_vencimiento_permiso,
+#             clave_cat_tipo_retorno,
+#             clave_cat_modulo_retorno,
+#             clave_cat_motivo_baja,
+#             clave_cat_estatus_retorno,
+#             certificado_retorno,
+#             fecha_ultimo_ingreso,
+#             fecha_expedicion_permiso,
+#             clave_cat_forma_pago,
+#             clave_cat_tipo_moneda_pago,
+#             clave_cat_tipo_captura,
+#             dias_disponibles_iniciales,
+#             clave_cat_bandera_inicio_facultades,
+#             fecha_retorno_definitivamente,
+#             fecha_maxima_retorno,
+#             clave_cat_bandera_remolque
+#         )
+#     WITH 
+#         drop indexes,
+#         fields terminated by '|', 
+#         skip header = 1, 
+#         fields optionally enclosed by '"' 
     
-    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+#     SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
 
-EOF
+# EOF
 
-# Ejecutar la carga utilizando pgloader
-echo "Launch pgloader"
-pgloader $config_file
+# # Ejecutar la carga utilizando pgloader
+# echo "Launch pgloader"
+# pgloader $config_file
 
-# Eliminar el archivo de configuración temporal
-echo "Delete config file temp"
-rm $config_file
-done;
+# # Eliminar el archivo de configuración temporal
+# echo "Delete config file temp"
+# rm $config_file
+# done;
 
 
 #################################################
@@ -1070,6 +1070,74 @@ done;
 # echo "Delete config file temp"
 # rm $config_file
 # done;
+
+
+#################################################
+###             PRORROGA
+################################################
+
+for archivo in $source_file/prorroga/*.txt
+do
+config_file=$(mktemp)
+cat << EOF > $config_file
+LOAD CSV
+    FROM '$archivo'  WITH ENCODING iso-8859-1
+        HAVING FIELDS
+        (
+            folio_permiso,
+            consecutivo_prorroga,
+            fecha_actualizacion_registro [date format 'DD/MM/YYYY HH24:MI:SS'],
+            numero_forma_migratoria,
+            clave_cat_modulo_efectua_prorroga,
+            clave_cat_turno_prorroga,
+            fecha_ingreso_anterior [date format 'DDMMYYYY'],
+            hora_internacion_anterior [date format 'HH24:MI:SS'],
+            dias_disponibles_anteriores,
+            numero_ingresos_anteriores,
+            dias_disponibles_prorroga,
+            fecha_maximo_retorno_prorroga [date format 'DDMMYYYY'],
+            numero_forma_migratoria_prorroga,
+            fecha_prorroga [date format 'DDMMYYYY'],
+            hora_prorroga [date format 'HH24:MI:SS'],
+            fecha_ultima_prorroga
+        )
+    INTO $database_url
+        TARGET TABLE $target_table_prorroga
+        (
+            folio_permiso,
+            consecutivo_prorroga,
+            fecha_actualizacion_registro,
+            numero_forma_migratoria,
+            clave_cat_modulo_efectua_prorroga,
+            clave_cat_turno_prorroga,
+            fecha_ingreso_anterior,
+            hora_internacion_anterior,
+            dias_disponibles_anteriores,
+            numero_ingresos_anteriores,
+            dias_disponibles_prorroga,
+            fecha_maximo_retorno_prorroga,
+            numero_forma_migratoria_prorroga,
+            fecha_prorroga,
+            hora_prorroga
+        )
+    WITH 
+        drop indexes,
+        fields terminated by '|', 
+        skip header = 1, 
+        fields optionally enclosed by '"' 
+    
+    SET work_mem to '256MB', maintenance_work_mem to '2048 MB';
+EOF
+
+# Ejecutar la carga utilizando pgloader
+echo "Launch pgloader"
+pgloader $config_file
+
+# Eliminar el archivo de configuración temporal
+echo "Delete config file temp"
+rm $config_file
+done;
+
 
 #################################################
 ###         PROPIETARIO - EMBARCACION
