@@ -25,8 +25,8 @@ target_table_tramitador="public.ciitev_tramitador"
 
 # URL de la base de datos PostgreSQL
 # database_url="pgsql://postgres:D3sarrollo123..@ziondesarrollo.southcentralus.cloudapp.azure.com:5432/anam_migrations"
-database_url="postgresql://postgres:example@migraciones-db-1:5432/postgres"
-# database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration"
+# database_url="postgresql://postgres:example@migraciones-db-1:5432/postgres"
+database_url="postgresql://anam_migration:postgres@localhost:5432/anam_migration"
 
 
 #################################################
